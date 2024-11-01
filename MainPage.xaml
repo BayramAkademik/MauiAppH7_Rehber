@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppH7_Rehber.MainPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Ekle" IconImageSource="add.png" Clicked="Add_Click"/>
+    </ContentPage.ToolbarItems>
+
+
+    <ScrollView>
+        <CollectionView x:Name="lstKisiler">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem 
+                                    IconImageSource="delete.png"
+                                    Clicked="Delete_Click"
+                                    CommandParameter="{Binding Id}"/>
+
+                                <SwipeItem 
+                                    IconImageSource="image.png"
+                                    Text="Resim"
+                                    Clicked="ImageAdd_Click"
+                                    CommandParameter="{Binding Id}"/>
+
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem 
+                                    IconImageSource="edit.png"
+                                    Clicked="Edit_Click"
+                                    CommandParameter="{Binding Id}"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+
+                        <Frame BorderColor="Orange">
+
+                            <Grid RowDefinitions="Auto,Auto,Auto"
+                          ColumnDefinitions="Auto,*"
+                          ColumnSpacing="10"
+                          RowSpacing="10">
+
+                                <Frame 
+                                BorderColor="Blue"
+                                Margin="0"
+                                Grid.Column="0"
+                               Grid.Row="0"
+                               Grid.RowSpan="3"
+                                   CornerRadius="80">
+                                    <Image
+                                    Scale="2"
+                               Source="{Binding Resim}"
+                                   WidthRequest="80"/>
+
+                                </Frame>
+
+                                <Label 
+                                Grid.Column="1"
+                               Grid.Row="0"
+                               FontSize="Large"
+                               Text="{Binding AdSoyad}"/>
+
+                                <Label 
+                               FontSize="Medium"
+                               Grid.Column="1"
+                               Grid.Row="1"
+                               Text="{Binding Telefon}"/>
+
+                                <Label 
+                               FontSize="Small"
+                               Grid.Column="1"
+                               Grid.Row="2"
+                               Text="{Binding Mail}"/>
+
+
+                            </Grid>
+                        </Frame>
+                    </SwipeView>
+
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </ScrollView>
+
+</ContentPage>
